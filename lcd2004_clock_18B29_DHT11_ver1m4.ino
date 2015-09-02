@@ -276,7 +276,7 @@ dry = EEPROM.read(207);
 
 void loop () {
 
-  int h = dht.readHumidity();
+  has = dht.readHumidity();
 //  float t = dht.readTemperature();
   
    // 11 bit resolution by default 
