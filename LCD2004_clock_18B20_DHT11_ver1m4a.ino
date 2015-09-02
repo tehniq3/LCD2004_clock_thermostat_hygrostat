@@ -312,6 +312,24 @@ sensors.requestTemperatures(); // запрос на получение темп�
 te = (sensors.getTempCByIndex(0)); 
 //  delay(150/ (1 << (12-resolution)));
   
+  
+    DateTime now = RTC.now(); //get time from RTC
+    //Display current time
+    
+     byte ore = now.hour();
+     byte minuti = now.minute();
+     byte secunzi = now.second();
+     if (secunzi == 0) lcd.clear();
+
+    lcd.setCursor (0,2);
+    lcd.print(now.day(), DEC);
+    lcd.print('/');
+    lcd.print(now.month());
+    lcd.print('/');
+    lcd.print(now.year(), DEC);
+    lcd.print(" ");
+//    lcd.setCursor (0,3);
+
  //  lcd.setCursor(11, 1);
      lcd.setCursor(13, 2);
   // lcd.print("t=");
@@ -338,21 +356,7 @@ te = (sensors.getTempCByIndex(0));
   // lcd.print("H=");
    lcd.print(h);
    lcd.print("%RH"); 
-   
-    DateTime now = RTC.now(); //get time from RTC
-    //Display current time
-    lcd.setCursor (0,2);
-    lcd.print(now.day(), DEC);
-    lcd.print('/');
-    lcd.print(now.month());
-    lcd.print('/');
-    lcd.print(now.year(), DEC);
-    lcd.print(" ");
-//    lcd.setCursor (0,3);
-    
-     byte ore = now.hour();
-     byte minuti = now.minute();
-     byte secunzi = now.second();
+
 /*    
 //    lcd.print(now.hour(), DEC);
 //    byte ore = now.hour();
@@ -417,7 +421,7 @@ else
   afisare(minuti);
 }
 
-lcd.setCursor(17, 0);
+lcd.setCursor(18, 0);
 //    if (now.second() <10) 
     if (secunzi <10) 
       {
@@ -1080,10 +1084,14 @@ void custom1()
   lcd.write(1);
   lcd.write(2);
   lcd.write(254);
-  lcd.setCursor(x+1,1);
+//  lcd.write(4);
+//  lcd.setCursor(x+1,1);
+lcd.setCursor(x,1);
+  lcd.write(4);
   lcd.write(255);
-  lcd.write(254);
-  lcd.write(254);
+  lcd.write(4);
+//  lcd.write(254);
+//  lcd.write(254);
 }
 
 void custom2()
